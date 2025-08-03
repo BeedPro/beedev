@@ -1,8 +1,17 @@
 export default async function (eleventyConfig) {
-  export const config = {
-    dir: {
-      input: "content",
-      output: "_site",
-    },
-  };
+  eleventyConfig.addPassthroughCopy({
+    "./public/": "/",
+  });
 }
+export const config = {
+  templateFormats: ["md", "njk", "html", "liquid", "11ty.js"],
+  markdownTemplateEngine: "njk",
+  dataTemplateEngine: "njk",
+  htmlTemplateEngine: "njk",
+  dir: {
+    input: "content",
+    includes: "../_includes",
+    data: "../_data",
+    output: "_site",
+  },
+};
